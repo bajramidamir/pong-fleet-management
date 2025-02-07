@@ -1,0 +1,46 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int    @id @default(autoincrement())
+  username  String @unique
+  password  String // Enkriptovana lozinka
+  role      String // "admin", "user"
+  firstName String
+  lastName  String
+  Trip      Trip[]
+}
+
+model Vehicle {
+  id            Int    @id @default(autoincrement())
+  make          String
+  model         String
+  chassisNumber String
+  engineNumber  String
+  enginePowerKw Int
+  enginePowerHp Int
+  fuelType      String
+  year          Int
+  Trip          Trip[]
+}
+
+model Trip {
+  id             Int      @id @default(autoincrement())
+  vehicleId      Int
+  vehicle        Vehicle  @relation(fields: [vehicleId], references: [id])
+  userId         Int
+  user           User     @relation(fields: [userId], references: [id])
+  startDate      DateTime
+  endDate        DateTime
+  startLocation  String
+  endLocation    String
+  driverName     String // Ovo sada može biti direktno povezano sa korisnikom
+  passengerCount Int
+  status         String // "evidentiran", "potvrđen", "odbijen", "završen"
+}
