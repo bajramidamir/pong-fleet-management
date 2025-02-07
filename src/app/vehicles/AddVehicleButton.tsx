@@ -47,9 +47,6 @@ const AddVehicleForm: React.FC<AddVehicleFormProps> = ({ fetchVehicles }) => {
         throw new Error(errorData.error || "Something went wrong");
       }
 
-      const result = await response.json();
-      console.log("Vehicle added successfully:", result);
-
       setFormData({
         make: "",
         model: "",
@@ -96,7 +93,7 @@ const AddVehicleForm: React.FC<AddVehicleFormProps> = ({ fetchVehicles }) => {
               </button>
             </div>
 
-            <Form
+            <AddForm
               formData={formData}
               handleChange={handleChange}
               handleSubmit={handleSubmit}

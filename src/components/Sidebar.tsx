@@ -1,8 +1,34 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const Sidebar = () => {
+  const router = useRouter();
+  const [token, setToken] = useState<string | null>(null);
+
+  useEffect(() => {
+    const storedToken = localStorage.getItem("token");
+    setToken(storedToken);
+  }, []);
+
+  const handleLogout = async () => {
+    try {
+      await fetch("/api/auth/logout", {
+        method: "POST",
+      });
+
+      localStorage.removeItem("token");
+      setToken(null);
+
+      router.push("/login");
+    } catch (error) {
+      console.error("Logout failed: ", error);
+    }
+  };
+
   return (
     <div>
       <aside className="flex flex-col p-4 z-10 h-screen sticky w-52 bg-white justify-between items-start border-r shadow-sm top-0 left-0">
@@ -47,6 +73,21 @@ const Sidebar = () => {
                 </div>
               </Link>
             </li>
+            {token && (
+              <li className="w-full">
+                <button onClick={handleLogout}>
+                  <div className="flex items-center rounded-md gap-4 w-full p-2 transition-all duration-300 ease-in-out hover:bg-gray-200">
+                    <Image
+                      src="report.svg"
+                      width={32}
+                      height={32}
+                      alt="Logout"
+                    />
+                    <p>Logout</p>
+                  </div>
+                </button>
+              </li>
+            )}
           </ul>
         </div>
         <div className="w-full">

@@ -3,7 +3,7 @@
 import Loader from "@/components/Loader";
 import VehicleTable from "@/app/vehicles/VehicleTable";
 import React, { useState, useEffect } from "react";
-import AddVehicleForm from "./AddVehicleForm";
+import AddVehicleForm from "./AddVehicleButton";
 
 const page = () => {
   const [vehicles, setVehicles] = useState<Vehicle[]>([]);

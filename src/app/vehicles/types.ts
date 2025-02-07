@@ -24,3 +24,32 @@ interface VehicleFormData {
 interface AddVehicleFormProps {
   fetchVehicles: () => void;
 }
+
+interface VehicleTableProps {
+  vehicles: Vehicle[];
+  fetchVehicles: () => void;
+}
+
+interface TableProps {
+  isSelected: (id: number) => boolean;
+  selectedVehicles: number[];
+  setSelectedVehicles: React.Dispatch<React.SetStateAction<number[]>>;
+  toggleSelectVehicle: (id: number) => void;
+  vehicles: Vehicle[];
+}
+
+interface EditFormProps {
+  editVehicle: [any, React.Dispatch<any>][number];
+  handleEditChange: (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => void;
+  handleEditSubmit: (e: React.FormEvent<Element>) => Promise<void>;
+  setIsEditing: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+interface ToolbarProps {
+  fetchVehicles: () => void;
+  handleDelete: (idArray: number[]) => Promise<void>;
+  handleEditClick: () => void;
+  selectedVehicles: number[];
+}
