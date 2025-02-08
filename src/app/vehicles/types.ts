@@ -53,3 +53,11 @@ interface ToolbarProps {
   handleEditClick: () => void;
   selectedVehicles: number[];
 }
+
+interface AddFormProps {
+  formData: VehicleFormData;
+  handleChange: (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => void;
+  handleSubmit: (e: React.FormEvent<Element>) => Promise<void>;
+}

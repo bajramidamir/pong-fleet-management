@@ -1,8 +1,9 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { z } from "zod";
 import { PrismaClient } from "@prisma/client";
+import { setCookie } from "cookies-next/server";
 
 const loginSchema = z.object({
   username: z.string().nonempty(),
@@ -11,8 +12,9 @@ const loginSchema = z.object({
 
 const prisma = new PrismaClient();
 
-export async function POST(req: Request) {
+export async function POST(req: NextRequest) {
   try {
+    const res = new NextResponse();
     const data = await req.json();
     const { username, password } = loginSchema.parse(data);
 
@@ -32,11 +34,28 @@ export async function POST(req: Request) {
       );
     }
 
-    const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET!, {
-      expiresIn: "1h",
-    });
+    if (!process.env.JWT_SECRET) {
+      throw new Error("JWT_SECRET is not defined in environment variables.");
+    }
 
-    return NextResponse.json({ token }, { status: 200 });
+    const token = jwt.sign(
+      {
+        userId: user.id,
+        username: user.username,
+        role: user.role,
+        firstName: user.firstName,
+        lastName: user.lastName,
+      },
+      process.env.JWT_SECRET,
+      {
+        expiresIn: "1h",
+        algorithm: "HS256",
+      }
+    );
+
+    await setCookie("token", token, { res, req });
+
+    return res;
   } catch (error) {
     return NextResponse.json({ error: "Nepoznata greska" }, { status: 500 });
   }

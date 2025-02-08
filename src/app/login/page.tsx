@@ -27,11 +27,9 @@ const LoginPage = () => {
         throw new Error("Login failed");
       }
 
-      const { token } = await response.json();
-      localStorage.setItem("token", token);
-      router.push("/");
+      router.push("/dashboard");
     } catch (error) {
-      setAlertMessage("Invalid email or password");
+      setAlertMessage("Invalid username or password");
       setShowAlert(true);
     }
   };

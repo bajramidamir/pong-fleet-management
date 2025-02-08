@@ -3,26 +3,28 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
+import { getCookie } from "cookies-next/client";
 
 const Sidebar = () => {
   const router = useRouter();
+  const pathname = usePathname();
   const [token, setToken] = useState<string | null>(null);
 
   useEffect(() => {
-    const storedToken = localStorage.getItem("token");
-    setToken(storedToken);
-  }, []);
+    const fetchCookieValue = async () => {
+      const tokenCookie = await getCookie("token");
+      setToken(tokenCookie || null);
+    };
+    fetchCookieValue();
+  }, [pathname]);
 
   const handleLogout = async () => {
     try {
       await fetch("/api/auth/logout", {
         method: "POST",
       });
-
-      localStorage.removeItem("token");
       setToken(null);
-
       router.push("/login");
     } catch (error) {
       console.error("Logout failed: ", error);
@@ -78,7 +80,7 @@ const Sidebar = () => {
                 <button onClick={handleLogout}>
                   <div className="flex items-center rounded-md gap-4 w-full p-2 transition-all duration-300 ease-in-out hover:bg-gray-200">
                     <Image
-                      src="report.svg"
+                      src="logout.svg"
                       width={32}
                       height={32}
                       alt="Logout"

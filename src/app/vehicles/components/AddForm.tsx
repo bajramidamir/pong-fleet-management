@@ -1,12 +1,8 @@
-interface AddFormProps {
-  formData: VehicleFormData;
-  handleChange: (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
-  ) => void;
-  handleSubmit: (e: React.FormEvent<Element>) => Promise<void>;
-}
-
-function AddForm({ formData, handleChange, handleSubmit }: AddFormProps) {
+export function AddForm({
+  formData,
+  handleChange,
+  handleSubmit,
+}: AddFormProps) {
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div>
