@@ -1,44 +1,11 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import React from "react";
 import Loader from "@/components/Loader";
-import { getCookie } from "cookies-next/client";
-import jwt from "jsonwebtoken";
-
-interface User {
-  username: string;
-  role: string;
-  firstName: string;
-  lastName: string;
-}
+import { useUser } from "@/context/UserContext";
 
 const ProfilePage: React.FC = () => {
-  const [user, setUser] = useState<User | null>(null);
-  const router = useRouter();
-
-  useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        const response = await fetch("/api/auth/verify-token", {
-          method: "GET",
-          credentials: "same-origin",
-        });
-
-        if (response.ok) {
-          const data = await response.json();
-          setUser(data.user);
-        } else {
-          router.push("/login");
-        }
-      } catch (err) {
-        console.error("Error verifying token:", err);
-        router.push("/login");
-      }
-    };
-
-    fetchUserData();
-  }, [router]);
+  const { user } = useUser();
 
   if (!user) {
     return <Loader />;

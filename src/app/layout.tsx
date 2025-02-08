@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Sidebar from "@/components/Sidebar";
+import { UserProvider } from "@/context/UserContext";
 
 export const metadata: Metadata = {
   title: "Pong - Vozni park",
@@ -15,8 +16,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`bg-gray-100 flex`}>
-        <Sidebar />
-        <main className="w-full">{children}</main>
+        <UserProvider>
+          <Sidebar />
+          <main className="w-full">{children}</main>
+        </UserProvider>
       </body>
     </html>
   );

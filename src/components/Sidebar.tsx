@@ -1,30 +1,22 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter, usePathname } from "next/navigation";
-import { getCookie } from "cookies-next/client";
+import { useRouter } from "next/navigation";
+import { useUser } from "@/context/UserContext";
 
 const Sidebar = () => {
   const router = useRouter();
-  const pathname = usePathname();
-  const [token, setToken] = useState<string | null>(null);
-
-  useEffect(() => {
-    const fetchCookieValue = async () => {
-      const tokenCookie = await getCookie("token");
-      setToken(tokenCookie || null);
-    };
-    fetchCookieValue();
-  }, [pathname]);
+  const { setUser } = useUser();
+  const { user } = useUser();
 
   const handleLogout = async () => {
     try {
       await fetch("/api/auth/logout", {
         method: "POST",
       });
-      setToken(null);
+      setUser(null);
       router.push("/login");
     } catch (error) {
       console.error("Logout failed: ", error);
@@ -75,7 +67,7 @@ const Sidebar = () => {
                 </div>
               </Link>
             </li>
-            {token && (
+            {user && (
               <li className="w-full">
                 <button onClick={handleLogout}>
                   <div className="flex items-center rounded-md gap-4 w-full p-2 transition-all duration-300 ease-in-out hover:bg-gray-200">

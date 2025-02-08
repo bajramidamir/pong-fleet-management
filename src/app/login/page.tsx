@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import Alert from "@/components/Alert";
 import { LoginForm } from "./components/LoginForm";
 import Image from "next/image";
+import { useUser } from "@/context/UserContext";
 
 const LoginPage = () => {
   const [username, setUsername] = useState("");
@@ -12,6 +13,7 @@ const LoginPage = () => {
   const [showAlert, setShowAlert] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
   const router = useRouter();
+  const { setUser } = useUser();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -26,6 +28,18 @@ const LoginPage = () => {
       if (!response.ok) {
         throw new Error("Login failed");
       }
+
+      const userResponse = await fetch("/api/auth/verify-token", {
+        method: "GET",
+        credentials: "include",
+      });
+
+      if (!userResponse.ok) {
+        throw new Error("Failed to fetch user data!");
+      }
+
+      const { user } = await userResponse.json();
+      setUser(user);
 
       router.push("/dashboard");
     } catch (error) {
