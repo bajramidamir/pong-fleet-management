@@ -84,7 +84,7 @@ const AddVehicleForm: React.FC<AddVehicleFormProps> = ({ fetchVehicles }) => {
   return (
     <div className="my-8">
       <button
-        className="flex items-center align-middle gap-2 p-2 bg-blue-500 text-white text-lg rounded-md shadow-md hover:bg-blue-600 transition duration-200"
+        className="flex items-center align-middle gap-2 p-2 bg-purple-400 text-white text-lg rounded-md shadow-md hover:bg-purple-600 transition duration-200"
         onClick={openModal}
       >
         Dodaj automobil{" "}

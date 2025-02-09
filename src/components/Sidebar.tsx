@@ -30,7 +30,7 @@ const Sidebar = () => {
           <ul className="space-y-4 w-full">
             <li className="w-full">
               <Link href="/vehicles" passHref>
-                <div className="flex items-center rounded-md gap-4 w-full p-2 transition-all duration-300 ease-in-out hover:bg-gray-200">
+                <div className="flex items-center rounded-md gap-4 w-full p-2 transition-all duration-300 ease-in-out hover:bg-purple-100">
                   <Image
                     src="car.svg"
                     width={32}
@@ -43,7 +43,7 @@ const Sidebar = () => {
             </li>
             <li className="w-full">
               <Link href="/orders" passHref>
-                <div className="flex items-center rounded-md gap-4 w-full p-2 transition-all duration-300 ease-in-out hover:bg-gray-200">
+                <div className="flex items-center rounded-md gap-4 w-full p-2 transition-all duration-300 ease-in-out hover:bg-purple-100">
                   <Image
                     src="order.svg"
                     width={32}
@@ -56,7 +56,7 @@ const Sidebar = () => {
             </li>
             <li className="w-full">
               <Link href="/reports" passHref>
-                <div className="flex items-center rounded-md gap-4 w-full p-2 transition-all duration-300 ease-in-out hover:bg-gray-200">
+                <div className="flex items-center rounded-md gap-4 w-full p-2 transition-all duration-300 ease-in-out hover:bg-purple-100">
                   <Image
                     src="report.svg"
                     width={32}
@@ -70,7 +70,7 @@ const Sidebar = () => {
             {user && (
               <li className="w-full">
                 <button onClick={handleLogout}>
-                  <div className="flex items-center rounded-md gap-4 w-full p-2 transition-all duration-300 ease-in-out hover:bg-gray-200">
+                  <div className="flex items-center rounded-md gap-4 w-full p-2 transition-all duration-300 ease-in-out hover:bg-purple-100">
                     <Image
                       src="logout.svg"
                       width={32}
@@ -86,7 +86,7 @@ const Sidebar = () => {
         </div>
         <div className="w-full">
           <Link href="/profile" passHref>
-            <div className="flex items-center rounded-md gap-4 w-full p-2 transition-all duration-300 ease-in-out hover:bg-gray-200">
+            <div className="flex items-center rounded-md gap-4 w-full p-2 transition-all duration-300 ease-in-out hover:bg-purple-100">
               <Image src="user.svg" width={32} height={32} alt="Profil" />
               <p>Profil</p>
             </div>

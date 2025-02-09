@@ -18,7 +18,7 @@ export function AddForm({
           id="make"
           value={formData.make}
           onChange={handleChange}
-          className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
           required
         />
       </div>
@@ -36,7 +36,7 @@ export function AddForm({
           id="model"
           value={formData.model}
           onChange={handleChange}
-          className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
           required
         />
       </div>
@@ -54,7 +54,7 @@ export function AddForm({
           id="chassisNumber"
           value={formData.chassisNumber}
           onChange={handleChange}
-          className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
           required
         />
       </div>
@@ -72,7 +72,7 @@ export function AddForm({
           id="engineNumber"
           value={formData.engineNumber}
           onChange={handleChange}
-          className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
           required
         />
       </div>
@@ -90,7 +90,7 @@ export function AddForm({
           id="enginePowerKw"
           value={formData.enginePowerKw}
           onChange={handleChange}
-          className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
           required
         />
       </div>
@@ -108,7 +108,7 @@ export function AddForm({
           id="enginePowerHp"
           value={formData.enginePowerHp}
           onChange={handleChange}
-          className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
           required
         />
       </div>
@@ -125,7 +125,7 @@ export function AddForm({
           id="fuelType"
           value={formData.fuelType}
           onChange={handleChange}
-          className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
           required
         >
           <option value="">Odaberite vrstu goriva</option>
@@ -148,14 +148,14 @@ export function AddForm({
           id="year"
           value={formData.year}
           onChange={handleChange}
-          className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
           required
         />
       </div>
 
       <button
         type="submit"
-        className="w-full p-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition duration-200"
+        className="w-full p-2 bg-purple-500 text-white rounded-md hover:bg-purple-600 transition duration-200"
       >
         Dodaj
       </button>

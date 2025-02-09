@@ -43,7 +43,7 @@ export function Toolbar({
         />
       </button>
       <button
-        className="transition-all duration-300 ease-in-out px-4 py-2 rounded-md bg-blue-400 text-white"
+        className="transition-all duration-300 ease-in-out px-4 py-2 rounded-md bg-purple-400 hover:bg-purple-600 text-white"
         onClick={() => fetchVehicles()}
       >
         <Image

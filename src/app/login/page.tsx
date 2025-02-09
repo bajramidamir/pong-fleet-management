@@ -6,6 +6,7 @@ import Alert from "@/components/Alert";
 import { LoginForm } from "./components/LoginForm";
 import Image from "next/image";
 import { useUser } from "@/context/UserContext";
+import Link from "next/link";
 
 const LoginPage = () => {
   const [username, setUsername] = useState("");
@@ -75,6 +76,11 @@ const LoginPage = () => {
           setUsername={setUsername}
           username={username}
         />
+        <p className="mt-4 text-gray-500 hover:underline text-right text-sm">
+          <Link href="/register">
+            Nemate korisnički nalog? Pridružite nam se!
+          </Link>
+        </p>
       </div>
     </div>
   );

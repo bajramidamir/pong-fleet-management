@@ -4,6 +4,7 @@ import Alert from "@/components/Alert";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { RegisterForm } from "./components/RegisterForm";
+import Link from "next/link";
 
 const page = () => {
   const [formData, setFormData] = useState<UserFormData>({
@@ -48,9 +49,12 @@ const page = () => {
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
-        <h2 className="text-2xl font-semibold mb-6 text-center">
-          Napravite korisnički račun
+        <h2 className="text-3xl font-semibold mb-2 text-center">
+          Registracija
         </h2>
+        <p className="text-sm text-gray-500 text-center mb-4">
+          Treba nam samo par informacija
+        </p>
         {showAlert && (
           <Alert
             variant="Danger"
@@ -64,6 +68,9 @@ const page = () => {
           handleChange={handleChange}
           handleSubmit={handleSubmit}
         />
+        <p className="mt-4 text-gray-500 hover:underline text-right text-sm">
+          <Link href="/login">Već imate nalog? Upišite se!</Link>
+        </p>
       </div>
     </div>
   );
