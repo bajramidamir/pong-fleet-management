@@ -25,14 +25,14 @@ export function Table({
               }}
             />
           </th>
-          <th className="py-2 px-4 border-b">Marka</th>
-          <th className="py-2 px-4 border-b">Model</th>
-          <th className="py-2 px-4 border-b">Broj šasije</th>
-          <th className="py-2 px-4 border-b">Broj motora</th>
-          <th className="py-2 px-4 border-b">Snaga (kW)</th>
-          <th className="py-2 px-4 border-b">Snaga (HP)</th>
-          <th className="py-2 px-4 border-b">Vrsta goriva</th>
-          <th className="py-2 px-4 border-b">Godina</th>
+          <th className="py-2 px-4 font-medium border-b">Marka</th>
+          <th className="py-2 px-4 font-medium border-b">Model</th>
+          <th className="py-2 px-4 font-medium border-b">Broj šasije</th>
+          <th className="py-2 px-4 font-medium border-b">Broj motora</th>
+          <th className="py-2 px-4 font-medium border-b">Snaga (kW)</th>
+          <th className="py-2 px-4 font-medium border-b">Snaga (HP)</th>
+          <th className="py-2 px-4 font-medium border-b">Vrsta goriva</th>
+          <th className="py-2 px-4 font-medium border-b">Godina</th>
         </tr>
       </thead>
       <tbody>

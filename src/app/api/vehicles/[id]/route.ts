@@ -1,7 +1,19 @@
 import { NextResponse } from "next/server";
 import { PrismaClient } from "@prisma/client";
+import { z } from "zod";
 
 const prisma = new PrismaClient();
+
+const vehicleSchema = z.object({
+  make: z.string().nonempty(),
+  model: z.string().nonempty(),
+  chassisNumber: z.string().nonempty(),
+  engineNumber: z.string().nonempty(),
+  enginePowerKw: z.coerce.number().nonnegative(),
+  enginePowerHp: z.coerce.number().nonnegative(),
+  fuelType: z.string().nonempty(),
+  year: z.coerce.number().nonnegative(),
+});
 
 export async function PUT(
   req: Request,
@@ -10,18 +22,28 @@ export async function PUT(
   try {
     const { id } = await params;
     const data = await req.json();
+    const {
+      make,
+      model,
+      chassisNumber,
+      engineNumber,
+      enginePowerKw,
+      enginePowerHp,
+      fuelType,
+      year,
+    } = vehicleSchema.parse(data);
 
     const updatedVehicle = await prisma.vehicle.update({
       where: { id: parseInt(id) },
       data: {
-        make: data.make,
-        model: data.model,
-        chassisNumber: data.chassisNumber,
-        engineNumber: data.engineNumber,
-        enginePowerKw: Number(data.enginePowerKw),
-        enginePowerHp: Number(data.enginePowerHp),
-        fuelType: data.fuelType,
-        year: Number(data.year),
+        make: make,
+        model: model,
+        chassisNumber: chassisNumber,
+        engineNumber: engineNumber,
+        enginePowerKw: enginePowerKw,
+        enginePowerHp: enginePowerHp,
+        fuelType: fuelType,
+        year: year,
       },
     });
 

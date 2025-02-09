@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Alert from "@/components/Alert";
 import { AddForm } from "./components/AddForm";
+import Image from "next/image";
 
 const AddVehicleForm: React.FC<AddVehicleFormProps> = ({ fetchVehicles }) => {
   const [showModal, setShowModal] = useState<boolean>(false);
@@ -27,10 +28,18 @@ const AddVehicleForm: React.FC<AddVehicleFormProps> = ({ fetchVehicles }) => {
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
     const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
+    // convert explicitly to number
+    if (["enginePowerKw", "enginePowerHp", "year"].includes(name)) {
+      setFormData((prevData) => ({
+        ...prevData,
+        [name]: value === "" ? "" : Number(value),
+      }));
+    } else {
+      setFormData((prevData) => ({
+        ...prevData,
+        [name]: value,
+      }));
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -73,12 +82,19 @@ const AddVehicleForm: React.FC<AddVehicleFormProps> = ({ fetchVehicles }) => {
   };
 
   return (
-    <div className="mb-4">
+    <div className="my-8">
       <button
-        className="p-2 bg-blue-500 text-white rounded-md shadow-md hover:bg-blue-600 transition duration-200"
+        className="flex items-center align-middle gap-2 p-2 bg-blue-500 text-white text-lg rounded-md shadow-md hover:bg-blue-600 transition duration-200"
         onClick={openModal}
       >
-        Dodaj automobil
+        Dodaj automobil{" "}
+        <Image
+          width={24}
+          height={24}
+          src="add.svg"
+          className="invert"
+          alt="Add"
+        />
       </button>
 
       {showModal && (

@@ -143,7 +143,7 @@ export function AddForm({
           Godina proizvodnje
         </label>
         <input
-          type="text"
+          type="number"
           name="year"
           id="year"
           value={formData.year}
