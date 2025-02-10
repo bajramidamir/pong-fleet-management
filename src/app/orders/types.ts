@@ -32,3 +32,12 @@ interface Trip {
 interface TripItemProps {
   trips: Trip[];
 }
+
+interface TripFormData {
+  vehicleId: number;
+  startDate: string;
+  endDate: string;
+  startLocation: string;
+  endLocation: string;
+  passengerCount: number;
+}

@@ -1,3 +1,12 @@
+const dateOptions: Intl.DateTimeFormatOptions = {
+  year: "numeric",
+  day: "2-digit",
+  month: "2-digit",
+  hour: "2-digit",
+  minute: "2-digit",
+  hour12: false,
+};
+
 export function TripItem({ trips }: TripItemProps) {
   return (
     <div className="grid gap-4 md:grid-cols-2 grid-cols-1">
@@ -15,8 +24,8 @@ export function TripItem({ trips }: TripItemProps) {
             </p>
             <p>
               <span className="font-medium">Datumi:</span>{" "}
-              {new Date(trip.startDate).toLocaleDateString()} do{" "}
-              {new Date(trip.endDate).toLocaleDateString()}
+              {new Date(trip.startDate).toLocaleString(undefined, dateOptions)}{" "}
+              do {new Date(trip.endDate).toLocaleString(undefined, dateOptions)}
             </p>
             <p>
               <span className="font-medium">Lokacije:</span>{" "}
