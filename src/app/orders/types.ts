@@ -21,7 +21,7 @@ interface Trip {
     year: number;
   };
   user: {
-    id: number;
+    userId: number;
     username: string;
     role: string;
     firstName: string;
@@ -35,9 +35,15 @@ interface TripItemProps {
 
 interface TripFormData {
   vehicleId: number;
+  userId: number;
   startDate: string;
   endDate: string;
   startLocation: string;
   endLocation: string;
   passengerCount: number;
+}
+
+interface TripAddFormProps {
+  onOrderAdded: () => void;
+  closeModal: () => void;
 }

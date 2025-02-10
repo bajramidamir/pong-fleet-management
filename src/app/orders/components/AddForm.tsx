@@ -1,15 +1,28 @@
 import React, { useState, useEffect } from "react";
+import { useUser } from "@/context/UserContext";
+import Loader from "@/components/Loader";
 
-const AddForm = () => {
+const AddForm = ({ onOrderAdded, closeModal }: TripAddFormProps) => {
+  const { user } = useUser();
   const [vehicles, setVehicles] = useState<Vehicle[]>([]);
   const [formData, setFormData] = useState<TripFormData>({
     vehicleId: 0,
+    userId: 0,
     startDate: "",
     endDate: "",
     startLocation: "",
     endLocation: "",
     passengerCount: 0,
   });
+
+  useEffect(() => {
+    if (user) {
+      setFormData((prevData) => ({
+        ...prevData,
+        userId: user.userId,
+      }));
+    }
+  }, [user]);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -34,23 +47,62 @@ const AddForm = () => {
     fetchVehicles();
   }, []);
 
-  const handleSubmit = async (e: React.FormEvent) => {};
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log(formData);
+
+    try {
+      const response = await fetch("/api/orders", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || "Something went wrong");
+      }
+
+      setFormData({
+        vehicleId: 0,
+        userId: user?.userId!,
+        startDate: "",
+        endDate: "",
+        startLocation: "",
+        endLocation: "",
+        passengerCount: 0,
+      });
+      onOrderAdded();
+      closeModal();
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div>
-        <label htmlFor="vehicleId">Automobil</label>
-        <select
-          name="vehicleId"
-          id="vehicleId"
-          className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
-        >
-          {vehicles.map((vehicle) => (
-            <option key={vehicle.id} value={vehicle.id}>
-              {vehicle.make} {vehicle.model}
-            </option>
-          ))}
-        </select>
+        {vehicles.length === 0 ? (
+          <Loader />
+        ) : (
+          <>
+            <label htmlFor="vehicleId">Automobil</label>
+            <select
+              name="vehicleId"
+              id="vehicleId"
+              onChange={handleChange}
+              className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+            >
+              {vehicles.map((vehicle) => (
+                <option key={vehicle.id} value={vehicle.id}>
+                  {vehicle.make} {vehicle.model}
+                </option>
+              ))}
+            </select>
+          </>
+        )}
       </div>
       <div>
         <label

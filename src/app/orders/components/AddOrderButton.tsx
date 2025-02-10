@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import AddForm from "./AddForm";
 
-const AddOrderButton = () => {
+const AddOrderButton = ({ onOrderAdded }: { onOrderAdded: () => void }) => {
   const [showModal, setShowModal] = useState<boolean>(false);
   const openModal = () => setShowModal(true);
   const closeModal = () => setShowModal(false);
@@ -36,7 +36,7 @@ const AddOrderButton = () => {
               </button>
             </div>
 
-            <AddForm />
+            <AddForm onOrderAdded={onOrderAdded} closeModal={closeModal} />
           </div>
         </div>
       )}
