@@ -5,6 +5,11 @@ import Loader from "@/components/Loader";
 const AddForm = ({ onOrderAdded, closeModal }: TripAddFormProps) => {
   const { user } = useUser();
   const [vehicles, setVehicles] = useState<Vehicle[]>([]);
+  const [alertVariant, setAlertVariant] = useState<"Danger" | "Success">(
+    "Success"
+  );
+  const [alertMessage, setAlertMessage] = useState<string>("");
+  const [showAlert, setShowAlert] = useState<boolean>(false);
   const [formData, setFormData] = useState<TripFormData>({
     vehicleId: 0,
     userId: 0,
@@ -61,8 +66,9 @@ const AddForm = ({ onOrderAdded, closeModal }: TripAddFormProps) => {
       });
 
       if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || "Something went wrong");
+        setAlertVariant("Danger");
+        setAlertMessage("Greska pri kreiranju putnog naloga!");
+        setShowAlert(true);
       }
 
       setFormData({
@@ -77,7 +83,9 @@ const AddForm = ({ onOrderAdded, closeModal }: TripAddFormProps) => {
       onOrderAdded();
       closeModal();
     } catch (error) {
-      console.error(error);
+      setAlertVariant("Danger");
+      setAlertMessage("Greska pri kreiranju putnog naloga!");
+      setShowAlert(true);
     }
   };
 

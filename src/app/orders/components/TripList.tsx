@@ -1,7 +1,6 @@
 "use client";
 
 import Loader from "@/components/Loader";
-import Alert from "@/components/Alert";
 import React, { useEffect, useState } from "react";
 import { TripItem } from "./TripItem";
 
@@ -9,6 +8,9 @@ const TripsPage = ({ refreshTrigger }: { refreshTrigger: boolean }) => {
   const [trips, setTrips] = useState<Trip[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [filterStatus, setFilterStatus] = useState<"all" | Trip["status"]>(
+    "all"
+  );
 
   const fetchTrips = async () => {
     try {
@@ -30,6 +32,11 @@ const TripsPage = ({ refreshTrigger }: { refreshTrigger: boolean }) => {
     fetchTrips();
   }, [refreshTrigger]);
 
+  const filteredTrips =
+    filterStatus === "all"
+      ? trips
+      : trips.filter((trip) => trip.status === filterStatus);
+
   if (isLoading) {
     return (
       <div>
@@ -49,7 +56,31 @@ const TripsPage = ({ refreshTrigger }: { refreshTrigger: boolean }) => {
     );
   }
 
-  return <TripItem trips={trips} />;
+  return (
+    <div>
+      <div className="mb-4">
+        <label htmlFor="filterStatus" className="mr-2">
+          Status:
+        </label>
+        <select
+          id="filterStatus"
+          value={filterStatus}
+          onChange={(e) =>
+            setFilterStatus(e.target.value as "all" | Trip["status"])
+          }
+          className="p-2 border border-purple-400 focus:ring ring-purple-500 rounded bg-white"
+        >
+          <option value="all">Svi</option>
+          <option value="Evidentiran">Evidentiran</option>
+          <option value="Potvrdjen">Potvrdjen</option>
+          <option value="Odbijen">Odbijen</option>
+          <option value="Zavrsen">Zavrsen</option>
+        </select>
+      </div>
+
+      <TripItem trips={filteredTrips} />
+    </div>
+  );
 };
 
 export default TripsPage;
