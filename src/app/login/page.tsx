@@ -20,14 +20,14 @@ const LoginPage = () => {
     e.preventDefault();
 
     try {
-      const loginResponse = await fetch("/api/auth/login", {
+      const response = await fetch("/api/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password }),
         credentials: "include",
       });
 
-      if (!loginResponse.ok) {
+      if (!response.ok) {
         throw new Error("Login failed");
       }
 
@@ -37,14 +37,14 @@ const LoginPage = () => {
       });
 
       if (!userResponse.ok) {
-        throw new Error("Failed to fetch user data");
+        throw new Error("Failed to fetch user data!");
       }
 
       const { user } = await userResponse.json();
-
       setUser(user);
 
-      router.push("/dashboard");
+      console.log("Login successful. Redirecting to /dashboard...");
+      window.location.href = "/dashboard"; // Ručno preusmjeravanje
     } catch (error) {
       console.error("Login error:", error);
       setAlertMessage("Invalid username or password");
