@@ -10,10 +10,10 @@ const updateStatusSchema = z.object({
 
 export async function PATCH(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  props: { params: Promise<{ id: string }> }
 ) {
   try {
-    const { id } = params;
+    const { id } = await props.params;
     const body = await req.json();
     const { status } = updateStatusSchema.parse(body);
 

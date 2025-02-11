@@ -17,10 +17,10 @@ const vehicleSchema = z.object({
 
 export async function PUT(
   req: Request,
-  { params }: { params: { id: string } }
+  props: { params: Promise<{ id: string }> }
 ) {
   try {
-    const { id } = await params;
+    const { id } = await props.params;
     const data = await req.json();
     const {
       make,
@@ -58,10 +58,10 @@ export async function PUT(
 
 export async function DELETE(
   req: Request,
-  { params }: { params: { id: string } }
+  props: { params: Promise<{ id: string }> }
 ) {
   try {
-    const { id } = await params;
+    const { id } = await props.params;
 
     const deletedVehicle = await prisma.vehicle.delete({
       where: { id: parseInt(id) },
