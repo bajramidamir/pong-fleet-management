@@ -20,13 +20,14 @@ const LoginPage = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch("/api/auth/login", {
+      const loginResponse = await fetch("/api/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password }),
+        credentials: "include",
       });
 
-      if (!response.ok) {
+      if (!loginResponse.ok) {
         throw new Error("Login failed");
       }
 
@@ -36,19 +37,20 @@ const LoginPage = () => {
       });
 
       if (!userResponse.ok) {
-        throw new Error("Failed to fetch user data!");
+        throw new Error("Failed to fetch user data");
       }
 
       const { user } = await userResponse.json();
+
       setUser(user);
 
       router.push("/dashboard");
     } catch (error) {
+      console.error("Login error:", error);
       setAlertMessage("Invalid username or password");
       setShowAlert(true);
     }
   };
-
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
