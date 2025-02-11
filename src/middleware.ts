@@ -5,6 +5,18 @@ export async function middleware(req: NextRequest) {
   const token = req.cookies.get("token")?.value;
   const { pathname } = new URL(req.url);
 
+  if (pathname === "/" && token) {
+    try {
+      const secret = new TextEncoder().encode(process.env.JWT_SECRET!);
+      await jwtVerify(token, secret);
+      console.log("User is logged in. Redirecting to /dashboard");
+      return NextResponse.redirect(new URL("/dashboard", req.url));
+    } catch (error) {
+      console.error("Invalid or expired token:", error);
+      return NextResponse.redirect(new URL("/login", req.url));
+    }
+  }
+
   if (pathname === "/login") {
     console.log("User is on login page. Skipping middleware.");
     return NextResponse.next();
