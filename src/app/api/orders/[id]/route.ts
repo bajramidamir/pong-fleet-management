@@ -13,7 +13,7 @@ export async function PATCH(
   { params }: { params: { id: string } }
 ) {
   try {
-    const { id } = await params;
+    const { id } = params;
     const body = await req.json();
     const { status } = updateStatusSchema.parse(body);
 
