@@ -2,10 +2,13 @@
 
 import React, { useState, useEffect } from "react";
 import Loader from "@/components/Loader";
+import Report from "./components/Report";
 
 const page = () => {
   const [vehicles, setVehicles] = useState<Vehicle[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [startDate, setStartDate] = useState<string>();
+  const [endDate, setEndDate] = useState<string>();
   const [reportData, setReportData] = useState<ReportData | null>(null);
   const [isGenerating, setIsGenerating] = useState<boolean>(false);
 
@@ -14,9 +17,11 @@ const page = () => {
     setIsGenerating(true);
 
     const formData = new FormData(e.currentTarget);
-    const vehicleId = formData.get("vehicleId") as string;
+    const vehicleId = formData.get("vehicle") as string;
     const startDate = formData.get("startDate") as string;
     const endDate = formData.get("endDate") as string;
+    setStartDate(startDate);
+    setEndDate(endDate);
 
     try {
       const response = await fetch("/api/reports", {
@@ -120,6 +125,14 @@ const page = () => {
             </div>
           </form>
         </div>
+      )}
+
+      {reportData && (
+        <Report
+          reportData={reportData}
+          startDate={startDate}
+          endDate={endDate}
+        />
       )}
     </div>
   );
