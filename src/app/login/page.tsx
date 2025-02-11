@@ -42,9 +42,7 @@ const LoginPage = () => {
 
       const { user } = await userResponse.json();
       setUser(user);
-
-      console.log("Login successful. Redirecting to /dashboard...");
-      window.location.href = "/dashboard"; // Ručno preusmjeravanje
+      window.location.href = "/dashboard";
     } catch (error) {
       console.error("Login error:", error);
       setAlertMessage("Invalid username or password");
