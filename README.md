@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Fleet Management System
 
-## Getting Started
+Ova aplikacija je razvijena kao dio tehničkog intervjua i predstavlja sistem za vođenje voznog parka firme. Aplikacija je izgrađena koristeći moderne web tehnologije poput Next.js, Tailwind CSS, Prisma, Zod i Recharts. Podaci se pohranjuju u online hostanu PostgreSQL bazu podataka.
 
-First, run the development server:
+## Tehnologije korištene u projektu
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Next.js** - React framework za izgradnju server-side rendered i statickih web aplikacija.
+- **Tailwind CSS** - Utilitarni CSS framework za brzo i prilagodljivo stiliziranje.
+- **Prisma** - ORM alat za jednostavno rukovanje bazama podataka.
+- **Zod** - Biblioteka za deklarativnu validaciju i parsiranje podataka.
+- **Recharts** - Biblioteka za vizualizaciju podataka putem grafikona.
+- **PostgreSQL** - Relacijska baza podataka hostana online.
+- **bcrypt & JWT** - Alati za autentifikaciju korisnika i šifrovanje lozinki.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Ključni funkcionalnosti
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. **Evidencija automobila**
+   - Kreiranje novih automobila
+   - Ažuriranje podataka o postojećim automobilima
+   - Brisanje automobila iz baze podataka
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+2. **Kreiranje putnih naloga**
+   - Unos podataka o putovanjima povezanih sa vozilima
+   - Upravljanje statusima i detaljima putnih naloga
 
-## Learn More
+3. **Generisanje izvještaja**
+   - Filtriranje izvještaja prema vozilu (pojedinačno ili sva vozila)
+   - Odabir vremenskog perioda (datum od - datum do)
+   - Vizualizacija podataka koristeći grafikone putem Recharts biblioteke
 
-To learn more about Next.js, take a look at the following resources:
+## Autentifikacija korisnika
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **bcrypt** se koristi za šifrovanje lozinki korisnika.
+- **JWT (JSON Web Tokens)** se koristi za autentifikaciju i autorizaciju korisnika.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Vrste korisnika:
 
-## Deploy on Vercel
+1. **Admin**
+   - Može kreirati, ažurirati i brisati automobile iz baze podataka.
+   - Ima pristup svim funkcionalnostima sistema.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+2. **User**
+   - Može pregledati informacije o vozilima i kreirati putne naloge.
+   - Nema mogućnost izmjene ili brisanja podataka o vozilima.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+
+**Autor:** Damir Bajrami
+
+**Licenca:** MIT
+
