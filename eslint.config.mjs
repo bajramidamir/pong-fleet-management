@@ -17,12 +17,6 @@ const eslintConfig = [
       "react-hooks/rules-of-hooks": "off",
       "@typescript-eslint/no-explicit-any": "off",
     },
-    settings: {
-      next: {
-        rootDir: __dirname,
-      },
-    },
-    ignoreDuringBuilds: true,
   },
 ];
 
