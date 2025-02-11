@@ -13,7 +13,7 @@ const page = () => {
 
   return (
     <div className="p-8">
-      <h1 className="text-5xl font-semibold">Putni nalozi</h1>
+      <h1 className="md:text-5xl text-3xl font-semibold">Putni nalozi</h1>
       <AddOrderButton onOrderAdded={handleOrderAdded} />
       <TripList refreshTrigger={refreshTrips} />
     </div>

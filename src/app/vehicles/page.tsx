@@ -22,8 +22,8 @@ const page = () => {
   }, []);
 
   return (
-    <div className="p-8">
-      <h1 className="text-5xl font-semibold">Automobili</h1>
+    <div className="p-8 max-h-screen overflow-hidden">
+      <h1 className="md:text-5xl text-3xl font-semibold">Automobili</h1>
       <AddVehicleForm fetchVehicles={fetchVehicles} />
       {isLoading ? (
         <Loader />

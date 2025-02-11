@@ -54,16 +54,16 @@ const page = () => {
 
   return (
     <div className="p-8">
-      <h1 className="text-5xl font-semibold mb-8">Izvještaji</h1>
+      <h1 className="md:text-5xl text-3xl font-semibold mb-8">Izvještaji</h1>
       {isLoading ? (
         <Loader />
       ) : (
         <div className="p-4">
           <form
             onSubmit={handleSubmit}
-            className="flex gap-4 align-middle items-center"
+            className="flex flex-col md:flex-row gap-4 align-middle items-center"
           >
-            <div>
+            <div className="w-full md:w-auto">
               <label
                 htmlFor="vehicle"
                 className="text-gray-700 font-medium mb-2 text-sm block"
@@ -71,7 +71,7 @@ const page = () => {
                 Odaberi vozilo
               </label>
               <select
-                className="mt-1 p-2 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="mt-1 p-2 w-full md:w-auto bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
                 name="vehicle"
                 id="vehicle"
               >
@@ -83,42 +83,45 @@ const page = () => {
                 ))}
               </select>
             </div>
-            <div>
+
+            <div className="w-full md:w-auto">
               <label
-                htmlFor="vehicle"
+                htmlFor="startDate"
                 className="text-gray-700 font-medium mb-2 text-sm block"
               >
                 Pocetni datum
               </label>
               <input
                 type="date"
-                className="mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="mt-1 p-2 w-full md:w-auto border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
                 name="startDate"
                 id="startDate"
               />
             </div>
-            <div>
+
+            <div className="w-full md:w-auto">
               <label
-                htmlFor="vehicle"
+                htmlFor="endDate"
                 className="text-gray-700 font-medium mb-2 text-sm block"
               >
                 Zavrsni datum
               </label>
               <input
                 type="date"
-                className="mt-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="mt-1 p-2 w-full md:w-auto border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
                 name="endDate"
                 id="endDate"
               />
             </div>
-            <div>
+
+            <div className="w-full md:w-auto">
               <label className="mb-2 font-medium text-sm block invisible">
                 mali slatki hack (pozicija dugmeta)
               </label>
               <button
                 type="submit"
                 disabled={isGenerating}
-                className="p-2 bg-purple-400 text-white text-lg rounded-md shadow-md transition duration-300 ease-in-out hover:bg-purple-600"
+                className="w-full md:w-auto p-2 bg-purple-500 text-white text-lg rounded-md shadow-md transition duration-300 ease-in-out hover:bg-purple-600"
               >
                 {isGenerating ? "Generisanje..." : "Generisi izvjestaj"}
               </button>

@@ -38,9 +38,9 @@ export function TripItem({ trips }: TripItemProps) {
       {trips.map((trip) => (
         <div
           key={trip.id}
-          className="p-6 border rounded-lg w-full bg-white shadow-sm"
+          className="md:p-6 p-4 border rounded-lg w-full bg-white shadow-sm"
         >
-          <h2 className="text-xl font-semibold mb-8">
+          <h2 className="md:text-xl text-base font-semibold mb-8">
             Putni nalog #{trip.id} - {trip.vehicle.make} {trip.vehicle.model}
           </h2>
           <div className="text-base/8">

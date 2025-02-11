@@ -7,9 +7,9 @@ export function Toolbar({
   selectedVehicles,
 }: ToolbarProps) {
   return (
-    <div className="space-x-2">
+    <div className="space-x-1 sm:space-x-2">
       <button
-        className={`transition-all duration-300 ease-in-out px-4 py-2 rounded-md text-white ${
+        className={`transition-all duration-300 ease-in-out px-2 py-1 sm:px-4 sm:py-2 rounded-md text-white ${
           selectedVehicles.length === 1
             ? "bg-blue-400 hover:bg-blue-600"
             : "bg-gray-300 cursor-not-allowed"
@@ -26,7 +26,7 @@ export function Toolbar({
         />
       </button>
       <button
-        className={`transition-all duration-300 ease-in-out px-4 py-2 rounded-md text-white ${
+        className={`transition-all duration-300 ease-in-out px-2 py-1 sm:px-4 sm:py-2 rounded-md text-white ${
           selectedVehicles.length > 0
             ? "bg-red-400 hover:bg-red-600"
             : "bg-gray-300 cursor-not-allowed"
@@ -43,7 +43,7 @@ export function Toolbar({
         />
       </button>
       <button
-        className="transition-all duration-300 ease-in-out px-4 py-2 rounded-md bg-purple-400 hover:bg-purple-600 text-white"
+        className="transition-all duration-300 ease-in-out px-2 py-1 sm:px-4 sm:py-2 rounded-md bg-purple-400 hover:bg-purple-600 text-white"
         onClick={() => fetchVehicles()}
       >
         <Image

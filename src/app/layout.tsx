@@ -18,7 +18,7 @@ export default function RootLayout({
       <body className={`bg-gray-100 flex`}>
         <UserProvider>
           <Sidebar />
-          <main className="w-full">{children}</main>
+          <main className="w-full overflow-hidden">{children}</main>
         </UserProvider>
       </body>
     </html>

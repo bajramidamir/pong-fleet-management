@@ -5,17 +5,17 @@ export function EditForm({
   setIsEditing,
 }: EditFormProps) {
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center p-4">
-      <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
+    <div className="fixed inset-0 z-50 bg-black bg-opacity-50 flex justify-center items-center p-2 md:p-4">
+      <div className="bg-white p-4 md:p-6 rounded-lg shadow-lg w-full max-w-md">
         <div className="flex justify-between items-center mb-4">
-          <h2 className="text-xl font-bold">Uredi automobil</h2>
+          <h2 className="text-lg md:text-xl font-bold">Uredi automobil</h2>
           <button
             onClick={() => setIsEditing(false)}
             className="text-gray-500 hover:text-gray-700 transition duration-200"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
+              className="h-5 w-5 md:h-6 md:w-6"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -30,7 +30,7 @@ export function EditForm({
           </button>
         </div>
 
-        <form onSubmit={handleEditSubmit} className="space-y-4">
+        <form onSubmit={handleEditSubmit} className="space-y-2 md:space-y-4">
           <div>
             <label
               htmlFor="make"
@@ -44,7 +44,7 @@ export function EditForm({
               id="make"
               value={editVehicle.make}
               onChange={handleEditChange}
-              className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="mt-1 p-1 md:p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             />
           </div>
@@ -62,7 +62,7 @@ export function EditForm({
               id="model"
               value={editVehicle.model}
               onChange={handleEditChange}
-              className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="mt-1 p-1 md:p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             />
           </div>
@@ -80,7 +80,7 @@ export function EditForm({
               id="chassisNumber"
               value={editVehicle.chassisNumber}
               onChange={handleEditChange}
-              className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="mt-1 p-1 md:p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             />
           </div>
@@ -98,7 +98,7 @@ export function EditForm({
               id="engineNumber"
               value={editVehicle.engineNumber}
               onChange={handleEditChange}
-              className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="mt-1 p-1 md:p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             />
           </div>
@@ -116,7 +116,7 @@ export function EditForm({
               id="enginePowerKw"
               value={editVehicle.enginePowerKw}
               onChange={handleEditChange}
-              className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="mt-1 p-1 md:p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             />
           </div>
@@ -134,7 +134,7 @@ export function EditForm({
               id="enginePowerHp"
               value={editVehicle.enginePowerHp}
               onChange={handleEditChange}
-              className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="mt-1 p-1 md:p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             />
           </div>
@@ -151,7 +151,7 @@ export function EditForm({
               id="fuelType"
               value={editVehicle.fuelType}
               onChange={handleEditChange}
-              className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="mt-1 p-1 md:p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             >
               <option value="Benzin">Benzin</option>
@@ -173,14 +173,14 @@ export function EditForm({
               id="year"
               value={editVehicle.year}
               onChange={handleEditChange}
-              className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="mt-1 p-1 md:p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             />
           </div>
 
           <button
             type="submit"
-            className="w-full p-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition duration-200"
+            className="w-full p-1 md:p-2 bg-purple-400 text-white rounded-md hover:bg-purple-600 transition duration-200"
           >
             Spremi promjene
           </button>

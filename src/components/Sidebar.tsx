@@ -25,7 +25,10 @@ const Sidebar = () => {
 
   return (
     <div>
-      <aside className="flex flex-col p-4 z-10 h-screen sticky w-52 bg-white justify-between items-start border-r shadow-sm top-0 left-0">
+      <aside
+        className="flex flex-col p-4 z-10 h-screen sticky top-0 left-0 bg-white border-r shadow-sm 
+        w-16 md:w-52 transition-all duration-300 ease-in-out"
+      >
         <div className="flex flex-col gap-4">
           <ul className="space-y-4 w-full">
             <li className="w-full">
@@ -37,7 +40,7 @@ const Sidebar = () => {
                     height={32}
                     alt="Dashboard"
                   />
-                  <p>Dashboard</p>
+                  <p className="hidden md:block">Dashboard</p>
                 </div>
               </Link>
             </li>
@@ -50,7 +53,7 @@ const Sidebar = () => {
                     height={32}
                     alt="Automobili"
                   />
-                  <p>Automobili</p>
+                  <p className="hidden md:block">Automobili</p>
                 </div>
               </Link>
             </li>
@@ -63,7 +66,7 @@ const Sidebar = () => {
                     height={32}
                     alt="Putni nalozi"
                   />
-                  <p>Putni nalozi</p>
+                  <p className="hidden md:block">Putni nalozi</p>
                 </div>
               </Link>
             </li>
@@ -76,13 +79,13 @@ const Sidebar = () => {
                     height={32}
                     alt="Izvještaji"
                   />
-                  <p>Izvještaji</p>
+                  <p className="hidden md:block">Izvještaji</p>
                 </div>
               </Link>
             </li>
             {user && (
               <li className="w-full">
-                <button onClick={handleLogout}>
+                <button onClick={handleLogout} className="w-full">
                   <div className="flex items-center rounded-md gap-4 w-full p-2 transition-all duration-300 ease-in-out hover:bg-purple-100">
                     <Image
                       src="logout.svg"
@@ -90,20 +93,20 @@ const Sidebar = () => {
                       height={32}
                       alt="Logout"
                     />
-                    <p>Logout</p>
+                    <p className="hidden md:block">Logout</p>
                   </div>
                 </button>
               </li>
             )}
+            <li className="w-full">
+              <Link href="/profile" passHref>
+                <div className="flex items-center rounded-md gap-4 w-full p-2 transition-all duration-300 ease-in-out hover:bg-purple-100">
+                  <Image src="user.svg" width={32} height={32} alt="Profil" />
+                  <p className="hidden md:block">Profil</p>
+                </div>
+              </Link>
+            </li>
           </ul>
-        </div>
-        <div className="w-full">
-          <Link href="/profile" passHref>
-            <div className="flex items-center rounded-md gap-4 w-full p-2 transition-all duration-300 ease-in-out hover:bg-purple-100">
-              <Image src="user.svg" width={32} height={32} alt="Profil" />
-              <p>Profil</p>
-            </div>
-          </Link>
         </div>
       </aside>
     </div>

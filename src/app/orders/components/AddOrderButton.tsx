@@ -10,7 +10,7 @@ const AddOrderButton = ({ onOrderAdded }: { onOrderAdded: () => void }) => {
   return (
     <div className="my-8">
       <button
-        className="flex items-center align-middle gap-2 p-2 bg-purple-400 text-white text-lg rounded-md shadow-md hover:bg-purple-600 transition duration-200"
+        className="flex items-center align-middle gap-2 p-2 bg-purple-400 text-white text-sm md:text-lg rounded-md shadow-md hover:bg-purple-600 transition duration-200"
         onClick={openModal}
       >
         Dodaj nalog{" "}
@@ -24,7 +24,7 @@ const AddOrderButton = ({ onOrderAdded }: { onOrderAdded: () => void }) => {
       </button>
 
       {showModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center p-4">
+        <div className="fixed inset-0 z-50 bg-black bg-opacity-50 flex justify-center items-center p-4">
           <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-xl font-bold">Kreiraj nalog</h2>

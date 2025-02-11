@@ -5,11 +5,8 @@ export function AddForm({
 }: AddFormProps) {
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
-      <div>
-        <label
-          htmlFor="make"
-          className="block text-sm font-medium text-gray-700"
-        >
+      <div className="flex flex-col gap-1">
+        <label htmlFor="make" className="text-sm font-medium text-gray-800">
           Marka
         </label>
         <input
@@ -18,16 +15,13 @@ export function AddForm({
           id="make"
           value={formData.make}
           onChange={handleChange}
-          className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+          className="p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary shadow-sm"
           required
         />
       </div>
 
-      <div>
-        <label
-          htmlFor="model"
-          className="block text-sm font-medium text-gray-700"
-        >
+      <div className="flex flex-col gap-1">
+        <label htmlFor="model" className="text-sm font-medium text-gray-800">
           Model
         </label>
         <input
@@ -36,15 +30,15 @@ export function AddForm({
           id="model"
           value={formData.model}
           onChange={handleChange}
-          className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+          className="p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary shadow-sm"
           required
         />
       </div>
 
-      <div>
+      <div className="flex flex-col gap-1">
         <label
           htmlFor="chassisNumber"
-          className="block text-sm font-medium text-gray-700"
+          className="text-sm font-medium text-gray-800"
         >
           Broj šasije
         </label>
@@ -54,15 +48,15 @@ export function AddForm({
           id="chassisNumber"
           value={formData.chassisNumber}
           onChange={handleChange}
-          className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+          className="p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary shadow-sm"
           required
         />
       </div>
 
-      <div>
+      <div className="flex flex-col gap-1">
         <label
           htmlFor="engineNumber"
-          className="block text-sm font-medium text-gray-700"
+          className="text-sm font-medium text-gray-800"
         >
           Broj motora
         </label>
@@ -72,15 +66,15 @@ export function AddForm({
           id="engineNumber"
           value={formData.engineNumber}
           onChange={handleChange}
-          className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+          className="p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary shadow-sm"
           required
         />
       </div>
 
-      <div>
+      <div className="flex flex-col gap-1">
         <label
           htmlFor="enginePowerKw"
-          className="block text-sm font-medium text-gray-700"
+          className="text-sm font-medium text-gray-800"
         >
           Snaga motora (kW)
         </label>
@@ -90,15 +84,15 @@ export function AddForm({
           id="enginePowerKw"
           value={formData.enginePowerKw}
           onChange={handleChange}
-          className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+          className="p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary shadow-sm"
           required
         />
       </div>
 
-      <div>
+      <div className="flex flex-col gap-1">
         <label
           htmlFor="enginePowerHp"
-          className="block text-sm font-medium text-gray-700"
+          className="text-sm font-medium text-gray-800"
         >
           Snaga motora (KS)
         </label>
@@ -108,16 +102,13 @@ export function AddForm({
           id="enginePowerHp"
           value={formData.enginePowerHp}
           onChange={handleChange}
-          className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+          className="p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary shadow-sm"
           required
         />
       </div>
 
-      <div>
-        <label
-          htmlFor="fuelType"
-          className="block text-sm font-medium text-gray-700"
-        >
+      <div className="flex flex-col gap-1">
+        <label htmlFor="fuelType" className="text-sm font-medium text-gray-800">
           Vrsta goriva
         </label>
         <select
@@ -125,7 +116,7 @@ export function AddForm({
           id="fuelType"
           value={formData.fuelType}
           onChange={handleChange}
-          className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+          className="p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary shadow-sm"
           required
         >
           <option value="">Odaberite vrstu goriva</option>
@@ -135,11 +126,8 @@ export function AddForm({
         </select>
       </div>
 
-      <div>
-        <label
-          htmlFor="year"
-          className="block text-sm font-medium text-gray-700"
-        >
+      <div className="flex flex-col gap-1">
+        <label htmlFor="year" className="text-sm font-medium text-gray-800">
           Godina proizvodnje
         </label>
         <input
@@ -148,14 +136,14 @@ export function AddForm({
           id="year"
           value={formData.year}
           onChange={handleChange}
-          className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+          className="p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary shadow-sm"
           required
         />
       </div>
 
       <button
         type="submit"
-        className="w-full p-2 bg-purple-500 text-white rounded-md hover:bg-purple-600 transition duration-200"
+        className="w-full p-2 bg-primary text-white bg-purple-400 hover:bg-purple-600 rounded-lg hover:bg-primary-dark transition duration-200 shadow-md"
       >
         Dodaj
       </button>

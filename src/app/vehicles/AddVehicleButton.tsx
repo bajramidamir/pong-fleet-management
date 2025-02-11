@@ -28,7 +28,6 @@ const AddVehicleForm: React.FC<AddVehicleFormProps> = ({ fetchVehicles }) => {
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
     const { name, value } = e.target;
-    // convert explicitly to number
     if (["enginePowerKw", "enginePowerHp", "year"].includes(name)) {
       setFormData((prevData) => ({
         ...prevData,
@@ -84,7 +83,7 @@ const AddVehicleForm: React.FC<AddVehicleFormProps> = ({ fetchVehicles }) => {
   return (
     <div className="my-8">
       <button
-        className="flex items-center align-middle gap-2 p-2 bg-purple-400 text-white text-lg rounded-md shadow-md hover:bg-purple-600 transition duration-200"
+        className="flex items-center align-middle gap-2 p-2 bg-purple-400 text-white text-sm md:text-lg rounded-md shadow-md hover:bg-purple-600 transition duration-200"
         onClick={openModal}
       >
         Dodaj automobil{" "}
@@ -98,13 +97,13 @@ const AddVehicleForm: React.FC<AddVehicleFormProps> = ({ fetchVehicles }) => {
       </button>
 
       {showModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center p-4">
-          <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
+        <div className="fixed inset-0 z-50 bg-black bg-opacity-50 flex justify-center items-center p-2 sm:p-4">
+          <div className="bg-white p-4 md:p-6 rounded-lg shadow-lg w-full sm:max-w-screen-sm">
             <div className="flex justify-between items-center mb-4">
-              <h2 className="text-xl font-bold">Dodaj automobil</h2>
+              <h2 className="text-lg sm:text-xl font-bold">Dodaj automobil</h2>
               <button
                 onClick={closeModal}
-                className="text-gray-500 hover:text-gray-700 transition duration-200"
+                className="text-gray-500 hover:text-gray-700 transition duration-200 text-lg sm:text-xl"
               >
                 X
               </button>
