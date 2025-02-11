@@ -29,6 +29,19 @@ const Sidebar = () => {
         <div className="flex flex-col gap-4">
           <ul className="space-y-4 w-full">
             <li className="w-full">
+              <Link href="/dashboard" passHref>
+                <div className="flex items-center rounded-md gap-4 w-full p-2 transition-all duration-300 ease-in-out hover:bg-purple-100">
+                  <Image
+                    src="dashboard.svg"
+                    width={32}
+                    height={32}
+                    alt="Dashboard"
+                  />
+                  <p>Dashboard</p>
+                </div>
+              </Link>
+            </li>
+            <li className="w-full">
               <Link href="/vehicles" passHref>
                 <div className="flex items-center rounded-md gap-4 w-full p-2 transition-all duration-300 ease-in-out hover:bg-purple-100">
                   <Image
