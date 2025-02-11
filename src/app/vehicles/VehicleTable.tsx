@@ -1,14 +1,15 @@
-import Image from "next/image";
 import React, { useState } from "react";
 import Alert from "@/components/Alert";
 import { EditForm } from "./components/EditForm";
 import { Table } from "./components/Table";
 import { Toolbar } from "./components/Toolbar";
+import { useUser } from "@/context/UserContext";
 
 const VehicleTable: React.FC<VehicleTableProps> = ({
   vehicles,
   fetchVehicles,
 }) => {
+  const { user } = useUser();
   const [isEditing, setIsEditing] = useState<boolean>(false);
   const [selectedVehicles, setSelectedVehicles] = useState<number[]>([]);
   const [editVehicle, setEditVehicle] = useState<Vehicle | null>(null);
@@ -96,12 +97,14 @@ const VehicleTable: React.FC<VehicleTableProps> = ({
     <>
       <div className="bg-white shadow-md rounded-lg p-4 col-span-1 overflow-x-auto">
         <div className="mb-4">
-          <Toolbar
-            fetchVehicles={fetchVehicles}
-            handleDelete={handleDelete}
-            handleEditClick={handleEditClick}
-            selectedVehicles={selectedVehicles}
-          />
+          {user?.role === "admin" && (
+            <Toolbar
+              fetchVehicles={fetchVehicles}
+              handleDelete={handleDelete}
+              handleEditClick={handleEditClick}
+              selectedVehicles={selectedVehicles}
+            />
+          )}
         </div>
 
         <Table
